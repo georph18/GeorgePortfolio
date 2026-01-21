@@ -34,115 +34,6 @@ function scrollToLanding() {
 }
 
 // ==========================================================================
-// SOUNDCLOUD CUSTOM PLAYER (PROJECT 1)
-// ==========================================================================
-
-function formatTime(seconds) {
-    if (!Number.isFinite(seconds) || seconds < 0) {
-        return '0:00';
-    }
-    const totalSeconds = Math.floor(seconds);
-    const minutes = Math.floor(totalSeconds / 60);
-    const remainingSeconds = totalSeconds % 60;
-    return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`;
-}
-
-function initializeSoundCloudPlayer() {
-    if (!window.SC || !window.SC.Widget) {
-        return;
-    }
-
-    const widgetIframe = document.getElementById('sc-widget-1');
-    if (!widgetIframe) {
-        return;
-    }
-
-    const widget = SC.Widget(widgetIframe);
-    const playButton = document.querySelector('[data-sc-play="1"]');
-    const playIcon = playButton ? playButton.querySelector('.sc-play-icon') : null;
-    const progressBar = document.querySelector('[data-sc-progress="1"]');
-    const currentTime = document.querySelector('[data-sc-current="1"]');
-    const durationTime = document.querySelector('[data-sc-duration="1"]');
-    const volumeSlider = document.querySelector('[data-sc-volume="1"]');
-    let isReady = false;
-    let isPlaying = false;
-    let durationSeconds = 0;
-
-    widget.bind(SC.Widget.Events.READY, () => {
-        isReady = true;
-        widget.getDuration((duration) => {
-            durationSeconds = (duration || 0) / 1000;
-            if (durationTime) {
-                durationTime.textContent = formatTime(durationSeconds);
-            }
-        });
-        widget.setVolume(70);
-    });
-
-    widget.bind(SC.Widget.Events.PLAY, () => {
-        isPlaying = true;
-        if (playIcon) {
-            playIcon.textContent = '❚❚';
-        }
-    });
-
-    widget.bind(SC.Widget.Events.PAUSE, () => {
-        isPlaying = false;
-        if (playIcon) {
-            playIcon.textContent = '►';
-        }
-    });
-
-    widget.bind(SC.Widget.Events.FINISH, () => {
-        isPlaying = false;
-        if (playIcon) {
-            playIcon.textContent = '►';
-        }
-        if (progressBar) {
-            progressBar.style.width = '0%';
-        }
-        if (currentTime) {
-            currentTime.textContent = '0:00';
-        }
-    });
-
-    widget.bind(SC.Widget.Events.PLAY_PROGRESS, (event) => {
-        if (!event || !durationSeconds) {
-            return;
-        }
-        if (progressBar) {
-            progressBar.style.width = `${Math.min(event.relativePosition * 100, 100)}%`;
-        }
-        if (currentTime) {
-            currentTime.textContent = formatTime(event.currentPosition / 1000);
-        }
-    });
-
-    if (playButton) {
-        playButton.addEventListener('click', () => {
-            if (!isReady) {
-                return;
-            }
-            if (isPlaying) {
-                widget.pause();
-            } else {
-                widget.play();
-            }
-        });
-    }
-
-    if (volumeSlider) {
-        volumeSlider.addEventListener('input', (event) => {
-            if (!isReady) {
-                return;
-            }
-            const value = Number(event.target.value);
-            widget.setVolume(Math.min(Math.max(value, 0), 100));
-        });
-    }
-}
-
-// ==========================================================================
 // AUDIO PLAYER CONFIGURATION
 // ==========================================================================
 
@@ -521,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize audio players
     initializeAudioPlayers();
-    initializeSoundCloudPlayer();
 
     // Enable optional features (uncomment to activate)
     // enableKeyboardShortcuts();

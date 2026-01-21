@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>George Orphanides - Audio Engineering & Music Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://w.soundcloud.com/player/api.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- WaveSurfer.js for audio waveform visualization -->
     <script src="https://unpkg.com/wavesurfer.js@7.7.3/dist/wavesurfer.min.js"></script>
@@ -109,34 +108,16 @@
                 <p class="project-role">
                     <strong>Role:</strong> Recording (Vocals) / Editing / Mixing / Mastering
                 </p>
-                <!-- Custom SoundCloud player -->
-                <div class="audio-player sc-player" data-sc-player="1">
+                <!-- SoundCloud embed -->
+                <div class="audio-player">
                     <iframe
-                        id="sc-widget-1"
-                        class="sc-widget"
-                        title="SoundCloud widget - I Told You Things"
+                        class="soundcloud-player"
+                        title="SoundCloud player - I Told You Things"
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/george-590772684/melissa-i-told-you-things-cover&color=%239f7aea&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/george-590772684/melissa-i-told-you-things-cover&color=%239f7aea&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
                     ></iframe>
-                    <div class="sc-ui">
-                        <button class="sc-play-btn" type="button" data-sc-play="1" aria-label="Play">
-                            <span class="sc-play-icon" aria-hidden="true">►</span>
-                        </button>
-                        <div class="sc-progress" role="progressbar" aria-label="Playback progress">
-                            <div class="sc-progress-bar" data-sc-progress="1"></div>
-                        </div>
-                        <div class="sc-time">
-                            <span data-sc-current="1">0:00</span>
-                            <span class="sc-time-sep">/</span>
-                            <span data-sc-duration="1">0:00</span>
-                        </div>
-                        <div class="sc-volume">
-                            <i class="volume-icon fa-solid fa-volume-high" aria-hidden="true"></i>
-                            <input type="range" class="sc-volume-slider" data-sc-volume="1" min="0" max="100" value="70" aria-label="Volume">
-                        </div>
-                    </div>
                 </div>
             </div>
 
