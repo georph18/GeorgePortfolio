@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Orphanides - Audio Engineering & Music Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- WaveSurfer.js for audio waveform visualization -->
+    <script src="https://unpkg.com/wavesurfer.js@7.7.3/dist/wavesurfer.min.js"></script>
+</head>
+<body>
+    <!-- LANDING PAGE SECTION -->
+    <section id="landing" class="landing-section">
+        <div class="landing-content">
+            <!-- Animated bio section with photo and text -->
+            <div class="bio-container fade-in">
+                <div class="bio-image-wrapper">
+                    <img src="images/Bio Photo.jpeg" alt="George Orphanides" class="bio-image">
+                </div>
+                <div class="bio-text">
+                    <h1 class="name-title">George Orphanides</h1>
+                    <h2 class="subtitle">Audio Engineering & Music</h2>
+                    <p class="bio-description">
+                        George Orphanides is a Berklee College of Music graduate and audio engineer currently working as the lead engineer at Soundscape Studios in Cyprus. His work includes recording, editing, mixing, and managing studio sessions across multiple genres, as well as contributing as a session musician on drums, bass, and guitar.
+                    </p>
+                <!--Contact Details George-->    
+                <div class="contact-section fade-in-up" aria-label="Contact">
+                    <h2 class="subtitle">Contact</h2>
+
+                    <div class="contact-links">
+                        <div class="contact-pill contact-email">
+                            <a class="email-link" href="mailto:georph18@gmail.com">
+                                <span class="pill-icon" aria-hidden="true">
+                                    <!-- Heroicons: envelope -->
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 8.25v9.375A2.625 2.625 0 0 1 18.375 20.25H5.625A2.625 2.625 0 0 1 3 17.625V8.25m18 0A2.625 2.625 0 0 0 18.375 5.625H5.625A2.625 2.625 0 0 0 3 8.25m18 0-9 6.375L3 8.25"
+                                            stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span class="pill-text">georph18@gmail.com</span>
+                            </a>
+                            <span class="pill-divider" aria-hidden="true"></span>
+                            <button class="copy-btn" type="button" data-copy="georph18@gmail.com" aria-label="Copy email">
+                                <span class="copy-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h6A2.25 2.25 0 0 1 19.5 9.75v6A2.25 2.25 0 0 1 17.25 18h-6A2.25 2.25 0 0 1 9 15.75v-6Z"
+                                            stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.75 15.75H6A1.5 1.5 0 0 1 4.5 14.25v-8.5A1.5 1.5 0 0 1 6 4.25h8.5A1.5 1.5 0 0 1 16 5.75v.75"
+                                            stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </button>
+                            <span class="copy-status" aria-live="polite"></span>
+                        </div>
+
+                        <a class="contact-pill" href="https://www.linkedin.com/in/george-orphanides-452741273/" target="_blank" rel="noopener">
+                        <span class="pill-icon" aria-hidden="true">
+                            <!-- Heroicons: link -->
+                            <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M13.19 8.688a4.5 4.5 0 0 1 6.364 6.364l-3 3a4.5 4.5 0 0 1-6.364 0m3.62-3.62a4.5 4.5 0 0 1-6.364-6.364l3-3a4.5 4.5 0 0 1 6.364 0"
+                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="pill-text">LinkedIn</span>
+                        </a>
+
+                        <a class="contact-pill" href="https://www.instagram.com/george_orph/" target="_blank" rel="noopener">
+                        <span class="pill-icon" aria-hidden="true">
+                            <!-- Heroicons: camera -->
+                            <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M6.75 7.5h.75l1.06-1.59A1.5 1.5 0 0 1 9.81 5.25h4.38a1.5 1.5 0 0 1 1.25.66L16.5 7.5h.75A2.25 2.25 0 0 1 19.5 9.75v7.5A2.25 2.25 0 0 1 17.25 19.5H6.75A2.25 2.25 0 0 1 4.5 17.25v-7.5A2.25 2.25 0 0 1 6.75 7.5Z"
+                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 16.125a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="pill-text">Instagram</span>
+                        </a>
+                    </div>
+                    </div>
+
+                </div>
+           
+            </div>
+            
+            <!-- Call-to-action button -->
+            <button class="cta-button" onclick="scrollToPortfolio()">
+                View My Work
+                <span class="arrow">&#x21b4;</span>
+            </button>
+        </div>
+
+     
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="portfolio-container">
+            <h2 class="section-title">Portfolio Projects</h2>
+
+            <!-- Project 1: Melissa - I Told You Things -->
+            <div class="project-card" data-type="audio">
+                <div class="project-header">
+                    <h3 class="project-title">Melissa (Singer) – I Told You Things (Cover)</h3>
+                    <span class="project-type">Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Recording (Vocals) / Editing / Mixing / Mastering
+                </p>
+                <!-- Audio player with waveform -->
+                <div class="audio-player">
+                    <div id="waveform-1" class="waveform"></div>
+                    <div class="audio-controls">
+                        <button class="play-btn" data-player="1">
+                            <span class="play-icon">▶</span>
+                        </button>
+                        <div class="time-display">
+                            <span id="current-time-1">0:00</span> / <span id="duration-1">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <i class="volume-icon fa-solid fa-volume-high" aria-hidden="true"></i>
+                            <input type="range" class="volume-slider" data-player="1" min="0" max="100" value="70" aria-label="Volume">
+                            <span class="volume-value">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Corporate 6 - Library Music -->
+            <div class="project-card" data-type="audio">
+                <div class="project-header">
+                    <h3 class="project-title">Corporate 6 – Library Music</h3>
+                    <span class="project-type">Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Recording / Editing / Mixing
+                </p>
+                <div class="audio-player">
+                    <div id="waveform-2" class="waveform"></div>
+                    <div class="audio-controls">
+                        <button class="play-btn" data-player="2">
+                            <span class="play-icon">▶</span>
+                        </button>
+                        <div class="time-display">
+                            <span id="current-time-2">0:00</span> / <span id="duration-2">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <i class="volume-icon fa-solid fa-volume-high" aria-hidden="true"></i>
+                            <input type="range" class="volume-slider" data-player="2" min="0" max="100" value="70" aria-label="Volume">
+                            <span class="volume-value">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Rock Band - Silent Waters -->
+            <div class="project-card" data-type="audio">
+                <div class="project-header">
+                    <h3 class="project-title">Rock Band – Silent Waters</h3>
+                    <span class="project-type">Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Mixing
+                </p>
+                <div class="audio-player">
+                    <div id="waveform-3" class="waveform"></div>
+                    <div class="audio-controls">
+                        <button class="play-btn" data-player="3">
+                            <span class="play-icon">▶</span>
+                        </button>
+                        <div class="time-display">
+                            <span id="current-time-3">0:00</span> / <span id="duration-3">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <i class="volume-icon fa-solid fa-volume-high" aria-hidden="true"></i>
+                            <input type="range" class="volume-slider" data-player="3" min="0" max="100" value="70" aria-label="Volume">
+                            <span class="volume-value">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Jazz Band - Too Close for Comfort -->
+            <div class="project-card" data-type="video">
+                <div class="project-header">
+                    <h3 class="project-title">Jazz Band – Too Close for Comfort (Cover)</h3>
+                    <span class="project-type">Video & Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Recording (Drums, Double Bass, Saxophone, Guitar, Vocals) / Editing / Video Production
+                </p>
+                <!-- Video player -->
+                <div class="video-player">
+                    <iframe
+                        src="https://www.youtube.com/embed/LtAnsPOP578"
+                        title="Jazz Band - Too Close for Comfort (Cover)"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+
+            <!-- Project 5: Melissa - Wildflower -->
+            <div class="project-card" data-type="video">
+                <div class="project-header">
+                    <h3 class="project-title">Melissa (Singer) – Wildflower (Cover)</h3>
+                    <span class="project-type">Video & Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Recording (Vocals) / Editing / Mixing / Mastering / Video Production
+                </p>
+                <div class="video-player">
+                    <video controls preload="auto" playsinline>
+                        <source src="music/video/MELISSA - WILDFLOWER.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Project 6: Rock Band - No More Excuses -->
+            <div class="project-card" data-type="audio">
+                <div class="project-header">
+                    <h3 class="project-title">Rock Band – No More Excuses</h3>
+                    <span class="project-type">Audio</span>
+                </div>
+                <p class="project-role">
+                    <strong>Role:</strong> Mixing / Mastering
+                </p>
+                <div class="audio-player">
+                    <div id="waveform-6" class="waveform"></div>
+                    <div class="audio-controls">
+                        <button class="play-btn" data-player="6">
+                            <span class="play-icon">▶</span>
+                        </button>
+                        <div class="time-display">
+                            <span id="current-time-6">0:00</span> / <span id="duration-6">0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <i class="volume-icon fa-solid fa-volume-high" aria-hidden="true"></i>
+                            <input type="range" class="volume-slider" data-player="6" min="0" max="100" value="70" aria-label="Volume">
+                            <span class="volume-value">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to top button -->
+            <button class="back-to-top" onclick="scrollToLanding()">
+                ↑ Back to Top
+            </button>
+        </div>
+    </section>
+
+    <!-- JavaScript for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>

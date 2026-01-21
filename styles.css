@@ -1,0 +1,871 @@
+/* ==========================================================================
+   GLOBAL STYLES & RESET
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color palette - Dark grey with purple theme */
+    --primary-color: #e2e8f0;
+    --secondary-color: #cbd5e0;
+    --accent-color: #9f7aea;
+    --accent-hover: #b794f4;
+    --text-color: #f7fafc;
+    --text-light: #a0aec0;
+    --background: #1a202c;
+    --card-background: #2d3748;
+    --border-color: #4a5568;
+    --page-gradient: linear-gradient(
+        135deg,
+        #070709 0%,
+        #0c0b12 25%,
+        #2f1b3b 52%,
+        #17131d 70%,
+        #050506 100%
+    );
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+
+    /* Typography */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 3rem;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    background: var(--page-gradient);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   LANDING PAGE SECTION
+   ========================================================================== */
+
+.landing-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: transparent;
+    position: relative;
+}
+
+.landing-content {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+    animation: landingReveal 2s ease-out both;
+}
+
+/* Bio container with fade-in animation */
+.bio-container {
+    background: var(--background);
+    border-radius: 20px;
+    padding: var(--spacing-xxl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Fade-in animation */
+.fade-in {
+    animation: fadeInUp 1.4s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes landingReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bio image styling */
+.bio-image-wrapper {
+    flex-shrink: 0;
+}
+
+.bio-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.bio-image:hover {
+    transform: scale(1.05);
+}
+
+/* Bio text */
+.bio-text {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.name-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+}
+
+.bio-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Call-to-action button */
+.cta-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    line-height: 1.1;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.cta-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.cta-button .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Pulse animation for CTA button */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        box-shadow: 0 10px 35px rgba(102, 126, 234, 0.6);
+    }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.mouse {
+    width: 25px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: mouseScroll 1.5s ease-in-out infinite;
+}
+
+@keyframes mouseScroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(15px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* ==========================================================================
+   PORTFOLIO SECTION
+   ========================================================================== */
+
+.portfolio-section {
+    min-height: 100vh;
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    background: transparent;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: var(--font-size-3xl);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+    position: relative;
+    padding-bottom: var(--spacing-md);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Project cards */
+.project-card {
+    background: var(--background);
+    border-radius: 15px;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInProject 0.6s ease forwards;
+}
+
+/* Stagger animation for each card */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInProject {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(159, 122, 234, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
+    border-color: var(--accent-color);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.project-title {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    font-weight: 600;
+    flex: 1;
+}
+
+.project-type {
+    background: var(--accent-color);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.project-role {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   AUDIO PLAYER WITH WAVEFORM
+   ========================================================================== */
+
+.audio-player {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+/* Waveform container - WaveSurfer.js will render here */
+.waveform {
+    margin-bottom: var(--spacing-md);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Play button */
+.play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.play-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+.play-icon {
+    color: white;
+    font-size: var(--font-size-lg);
+}
+
+/* Time display */
+.time-display {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    font-family: 'Courier New', monospace;
+    min-width: 80px;
+}
+
+/* Volume control */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-left: auto;
+}
+
+.volume-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    user-select: none;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-color);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.volume-slider:hover {
+    background: var(--secondary-color);
+}
+
+/* Slider thumb (Chrome, Safari, Edge) */
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background: var(--accent-hover);
+    transform: scale(1.2);
+}
+
+/* Slider thumb (Firefox) */
+.volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+    background: var(--accent-hover);
+    transform: scale(1.2);
+}
+
+/* Volume percentage display */
+.volume-value {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    font-family: 'Courier New', monospace;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* ==========================================================================
+   VIDEO PLAYER
+   ========================================================================== */
+
+.video-player {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 16 / 9;
+}
+
+.video-player video,
+.video-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+/* ==========================================================================
+   BACK TO TOP BUTTON
+   ========================================================================== */
+
+.back-to-top {
+    display: block;
+    margin: var(--spacing-xxl) auto 0;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    :root {
+        --font-size-3xl: 2rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-xl: 1.25rem;
+    }
+
+    .bio-container {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+
+    .bio-text {
+        text-align: center;
+    }
+
+    .bio-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-type {
+        align-self: flex-start;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-xxl: 2.5rem;
+    }
+
+    .landing-section,
+    .portfolio-section {
+        padding: var(--spacing-md);
+    }
+
+    .bio-container {
+        padding: var(--spacing-md);
+    }
+
+    .name-title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .bio-description {
+        font-size: var(--font-size-base);
+    }
+
+    .project-card {
+        padding: var(--spacing-md);
+    }
+
+    .cta-button {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
+        gap: 0.6rem;
+    }
+
+    /* Audio controls responsive */
+    .audio-controls {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .volume-control {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+        margin-top: var(--spacing-xs);
+    }
+
+    .volume-slider {
+        flex: 1;
+        max-width: 150px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contact-pill {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-email {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES (for PDF export if needed)
+   ========================================================================== */
+
+@media print {
+    .cta-button,
+    .scroll-indicator,
+    .back-to-top {
+        display: none;
+    }
+
+    .landing-section {
+        background: white;
+    }
+}
+
+
+/* Subtle palette tuned to your dark + purple look */
+:root{
+  --bg: #0f1624;
+  --text: rgba(245, 247, 255, 0.92);
+  --muted: rgba(245, 247, 255, 0.70);
+
+  /* Accent (more subtle than bright blue) */
+  --accent: rgba(170, 150, 255, 0.85);     /* soft lavender */
+  --accent-2: rgba(124, 92, 255, 0.65);    /* deeper violet */
+
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-bg-hover: rgba(255, 255, 255, 0.085);
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.contact-section{
+  margin-top: 1.75rem;
+}
+
+.contact-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.contact-email{
+  gap: 0;
+  padding: 0.65rem 0.5rem;
+}
+
+.contact-email .email-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pill-divider{
+  width: 1px;
+  height: 18px;
+  margin: 0 0.35rem;
+  background: rgba(255,255,255,0.18);
+}
+
+/* Pill with gradient border */
+.contact-pill{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  padding: 0.8rem 1.05rem;
+  border-radius: 999px;
+  background: var(--pill-bg);
+
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.2px;
+
+  transform: translateZ(0);
+  transition: transform 220ms ease, background 220ms ease, color 220ms ease;
+}
+
+.contact-pill .pill-text{
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-pill .pill-text:hover{
+  color: var(--text);
+}
+
+.copy-btn{
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.25rem;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.copy-btn:hover{
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.copy-status{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--accent);
+  min-width: 60px;
+  text-align: center;
+}
+
+.copy-icon{
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  color: rgba(170,150,255,0.85);
+}
+
+.copy-icon svg{
+  width: 14px;
+  height: 14px;
+}
+
+/* Gradient border using a pseudo-element */
+.contact-pill::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;                 /* border thickness */
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    rgba(170,150,255,0.35),
+    rgba(255,255,255,0.10),
+    rgba(124,92,255,0.30)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 220ms ease;
+}
+
+.contact-pill:hover{
+  background: var(--pill-bg-hover);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.contact-pill:hover::before{
+  opacity: 1;
+}
+
+/* Icon styling */
+.pill-icon{
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: rgba(170,150,255,0.85);
+}
+
+.pill-icon svg{
+  width: 18px;
+  height: 18px;
+}
+
+/* Better focus than default blue outline */
+.contact-pill:focus{
+  outline: none;
+}
+
+.contact-pill:focus-visible{
+  box-shadow: 0 0 0 3px rgba(170,150,255,0.22);
+}
+
+/* Fade-in-up animation */
+.fade-in-up{
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 650ms ease forwards;
+}
+
+@keyframes fadeInUp{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fade-in-up{
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .contact-pill{
+    transition: none;
+  }
+}
