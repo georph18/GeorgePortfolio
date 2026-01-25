@@ -121,18 +121,25 @@
             <!-- Project 2: Corporate 6 - Library Music -->
             <div class="project-card" data-type="audio">
                 <div class="project-header">
-                    <h3 class="project-title">Corporate 6 – Library Music</h3>
+                    <h3 class="project-title">Corporate 6 Library Music</h3>
                     <span class="project-type">Audio</span>
                 </div>
                 <p class="project-role">
                     <strong>Role:</strong> Recording / Editing / Mixing
                 </p>
                 <div class="audio-player">
+                    <audio
+                        class="hidden-audio"
+                        data-player="2"
+                        preload="metadata"
+                        src="https://github.com/georph18/GeorgeOrphanidesPortfolio/releases/download/v1/CORP.6.wav"
+                    ></audio>
                     <div id="waveform-2" class="waveform"></div>
                     <div class="audio-controls">
                         <button class="play-btn" data-player="2">
                             <span class="play-icon">▶</span>
                         </button>
+                        <input type="range" class="seek-slider" data-player="2" min="0" max="100" value="0" aria-label="Seek">
                         <div class="time-display">
                             <span id="current-time-2">0:00</span> / <span id="duration-2">0:00</span>
                         </div>
@@ -144,7 +151,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Project 3: Rock Band - Silent Waters -->
             <div class="project-card" data-type="audio">
                 <div class="project-header">
@@ -213,18 +219,25 @@
             <!-- Project 6: Rock Band - No More Excuses -->
             <div class="project-card" data-type="audio">
                 <div class="project-header">
-                    <h3 class="project-title">Rock Band – No More Excuses</h3>
+                    <h3 class="project-title">Rock Band â€“ No More Excuses</h3>
                     <span class="project-type">Audio</span>
                 </div>
                 <p class="project-role">
                     <strong>Role:</strong> Mixing / Mastering
                 </p>
                 <div class="audio-player">
+                    <audio
+                        class="hidden-audio"
+                        data-player="6"
+                        preload="metadata"
+                        src="https://github.com/georph18/GeorgeOrphanidesPortfolio/releases/download/v1.2/No.More.Excuses.-.MIX.wav"
+                    ></audio>
                     <div id="waveform-6" class="waveform"></div>
                     <div class="audio-controls">
                         <button class="play-btn" data-player="6">
-                            <span class="play-icon">▶</span>
+                            <span class="play-icon">â–¶</span>
                         </button>
+                        <input type="range" class="seek-slider" data-player="6" min="0" max="100" value="0" aria-label="Seek">
                         <div class="time-display">
                             <span id="current-time-6">0:00</span> / <span id="duration-6">0:00</span>
                         </div>
@@ -236,7 +249,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Back to top button -->
             <button class="back-to-top" onclick="scrollToLanding()">
                 ↑ Back to Top

@@ -56,7 +56,7 @@ const audioProjects = {
         title: 'Rock Band - Silent Waters'
     },
     6: {
-        file: 'music/audio/No More Excuses - MIX.wav',
+        file: 'https://github.com/georph18/GeorgeOrphanidesPortfolio/releases/download/v1.2/No.More.Excuses.-.MIX.wav',
         title: 'Rock Band - No More Excuses'
     }
 };
@@ -79,7 +79,13 @@ function initializeAudioPlayers() {
     // Loop through each audio project
     Object.keys(audioProjects).forEach(projectId => {
         const project = audioProjects[projectId];
+        const htmlAudio = document.querySelector(`audio.hidden-audio[data-player="${projectId}"]`);
         const waveformElement = document.getElementById(`waveform-${projectId}`);
+
+        if (htmlAudio) {
+            setupHtmlAudioPlayer(projectId, htmlAudio);
+            return;
+        }
 
         // Skip if the waveform container doesn't exist in the DOM
         if (!waveformElement) {
@@ -135,12 +141,135 @@ function initializeAudioPlayers() {
 // ==========================================================================
 
 /**
+ * Setup event listeners for a custom HTML audio element (no waveform)
+ * @param {string} projectId - The project identifier
+ * @param {HTMLAudioElement} audioElement - The audio element
+ */
+function setupHtmlAudioPlayer(projectId, audioElement) {
+    const playButton = document.querySelector(`.play-btn[data-player="${projectId}"]`);
+    const playIcon = playButton ? playButton.querySelector('.play-icon') : null;
+    const currentTimeElement = document.getElementById(`current-time-${projectId}`);
+    const durationElement = document.getElementById(`duration-${projectId}`);
+    const seekSlider = document.querySelector(`.seek-slider[data-player="${projectId}"]`);
+    const volumeSlider = document.querySelector(`.volume-slider[data-player="${projectId}"]`);
+    const volumeValue = volumeSlider ? volumeSlider.nextElementSibling : null;
+    let isSeeking = false;
+
+    audioElement.volume = 0.7;
+    if (volumeSlider) {
+        volumeSlider.value = 70;
+        if (volumeValue) {
+            volumeValue.textContent = '70%';
+        }
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = Number(e.target.value) / 100;
+            audioElement.volume = Math.min(Math.max(volume, 0), 1);
+            if (volumeValue) {
+                volumeValue.textContent = `${e.target.value}%`;
+            }
+        });
+    }
+
+    if (playButton) {
+        playButton.addEventListener('click', () => {
+            if (audioElement.paused) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
+        });
+    }
+
+    audioElement.addEventListener('play', () => {
+        if (playIcon) {
+            playIcon.textContent = '⏸';
+        }
+        if (playButton) {
+            playButton.setAttribute('aria-label', 'Pause');
+        }
+    });
+
+    audioElement.addEventListener('pause', () => {
+        if (playIcon) {
+            playIcon.textContent = '▶';
+        }
+        if (playButton) {
+            playButton.setAttribute('aria-label', 'Play');
+        }
+    });
+
+    audioElement.addEventListener('loadedmetadata', () => {
+        if (durationElement) {
+            durationElement.textContent = formatTime(audioElement.duration);
+        }
+        if (currentTimeElement) {
+            currentTimeElement.textContent = formatTime(0);
+        }
+        if (seekSlider) {
+            seekSlider.value = 0;
+        }
+    });
+
+    audioElement.addEventListener('timeupdate', () => {
+        if (currentTimeElement) {
+            currentTimeElement.textContent = formatTime(audioElement.currentTime);
+        }
+        if (seekSlider && !isSeeking && audioElement.duration) {
+            seekSlider.value = (audioElement.currentTime / audioElement.duration) * 100;
+        }
+    });
+
+    audioElement.addEventListener('ended', () => {
+        if (playIcon) {
+            playIcon.textContent = '▶';
+        }
+        if (playButton) {
+            playButton.setAttribute('aria-label', 'Play');
+        }
+        if (currentTimeElement) {
+            currentTimeElement.textContent = formatTime(0);
+        }
+        if (seekSlider) {
+            seekSlider.value = 0;
+        }
+    });
+
+    if (seekSlider) {
+        const endSeek = () => {
+            isSeeking = false;
+        };
+
+        const startSeek = () => {
+            isSeeking = true;
+        };
+
+        seekSlider.addEventListener('input', (e) => {
+            if (!audioElement.duration) {
+                return;
+            }
+            const value = Number(e.target.value);
+            audioElement.currentTime = (value / 100) * audioElement.duration;
+        });
+
+        seekSlider.addEventListener('pointerdown', startSeek);
+        seekSlider.addEventListener('pointerup', endSeek);
+        seekSlider.addEventListener('pointercancel', endSeek);
+        seekSlider.addEventListener('lostpointercapture', endSeek);
+        seekSlider.addEventListener('mousedown', startSeek);
+        seekSlider.addEventListener('mouseup', endSeek);
+        seekSlider.addEventListener('touchstart', startSeek, { passive: true });
+        seekSlider.addEventListener('touchend', endSeek);
+        seekSlider.addEventListener('touchcancel', endSeek);
+    }
+}
+
+/**
  * Setup event listeners for a specific audio player
  * @param {string} projectId - The project identifier
  * @param {WaveSurfer} wavesurfer - The WaveSurfer instance
  */
 function setupPlayerEvents(projectId, wavesurfer) {
-    const playButton = document.querySelector(`[data-player="${projectId}"]`);
+    const playButton = document.querySelector(`.play-btn[data-player="${projectId}"]`);
     const playIcon = playButton.querySelector('.play-icon');
     const currentTimeElement = document.getElementById(`current-time-${projectId}`);
     const durationElement = document.getElementById(`duration-${projectId}`);
