@@ -48,7 +48,7 @@ const audioProjects = {
         title: 'Melissa - I Told You Things'
     },
     2: {
-        file: 'music/audio/CORP 6.wav',
+        file: 'https://github.com/georph18/GeorgeOrphanidesPortfolio/releases/download/v1/CORP.6.wav',
         title: 'Corporate 6 - Library Music'
     },
     3: {
